@@ -5,6 +5,12 @@ x-mautic-volumes:
   - ./mautic/media/files:/var/www/html/docroot/media/files:z
   - ./mautic/media/images:/var/www/html/docroot/media/images:z
   - ./cron:/opt/mautic/cron:z
+  - ./plugins/MauticTwigTemplatesBundle:/var/www/html/docroot/plugins/MauticTwigTemplatesBundle:z # comment this line if you don't have twig plugin
+  # entrypoint
+  - ./common/entrypoint.sh:/entrypoint.sh
+  - ./common/entrypoint_mautic_cron.sh:/entrypoint_mautic_cron.sh
+  - ./common/entrypoint_mautic_web.sh:/entrypoint_mautic_web.sh
+  - ./common/entrypoint_mautic_worker.sh:/entrypoint_mautic_worker.sh
 
 services:
   db:
